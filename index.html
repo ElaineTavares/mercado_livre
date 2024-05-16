@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.svg">
+    <title>Mercado Livre Clone</title>
+    <!-- BOOTSTRAP @5.2.0 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP ICONS @1.9.1-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- MATERIAL DESIGN ICONS @6.9.96-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <!-- Swiper @8.3.2-->
+    <link href="css/swiper-bundle.min.css" rel="stylesheet">
+    <!-- CSS PRÓPRIO CUSTOMIZADO-->
+    <link href="css/estilizado.css" rel="stylesheet">
+</head>
+
+<!-- PROJETO CRIADO NO CURSO DE PROGRAMAÇÃO WEB DO PROFESSOR DIMITRI — https://curso.programacaoweb.com.br -->
+
+<body class="bg-light">
+
+    <!-- TOPO-->
+    <header class="bg-ml">
+        <div class="container-xxl">
+            <!-- LINHA DE CIMA (LOGO, BUSCA E DISNEY PLUS)-->
+            <div class="row g-0 p-2">
+                <!-- LOGO-->
+                <div class="col-xl-2 col-lg-2 col-md-1 col-sm-2 col-2 logo__ml">
+                    <!-- <img class="img-fluid" src="img/logo2.png"> -->
+
+                </div>
+                <!-- BUSCA-->
+                <div class="col-xl-6 col-lg-6 col-md-9 col-sm-8 col-8  d-flex align-items-center">
+                    <div class="input-group ms-2">
+                        <input id="busca" class="form-control shadow-sm" type="search"
+                            placeholder="Buscar produtos, marcas e muito mais...">
+                        <button
+                            class="d-none d-lg-block shadow-sm rounded-0 border-0 border-start px-3 bg-white btn btn-outline-secondary"
+                            type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <!-- DISNEY PLUS / ICONE MENU MOBILE / ICONE CARRINHO MOBILE-->
+                <div class="d-flex justify-content-center align-items-center col-xl-4 col-lg-4 col-md-2 col-sm-2 col-2">
+                    <div class="d-flex d-lg-none m-auto">
+                        <!-- ICONE MENU MOBILE-->
+                        <i id="hamburguer" class="fs-3 ps-4 pe-2 bi bi-list"></i>
+                        <!-- ICONE CARRINHO MOBILE-->
+                        <i id="carrinho" class="fs-3 ps-2 bi bi-cart2"></i>
+                        <!-- RABINHO DO MENU MOBILE-->
+                        <i id="tail" class="position-absolute bi bi-chevron-up"></i>
+                    </div>
+                    <img class="img-fluid ms-xl-5 disney d-none d-lg-block float-end" src="img/disney.webp">
+                </div>
+            </div>
+            <!-- MENU MOBILE (CELULAR)-->
+            <div id="menu-mobile" class="row border-top d-lg-none">
+                <!-- ÁREA DO LOGIN-->
+                <div class="col-12 bg-ml">
+                    <div class="row d-flex align-items-center pt-3 text-dark">
+                        <div id="colUserImg" class="col-2 text-center">
+                            <i class="fs-3 p-3 rounded-circle bg-light bi bi-person"></i>
+                        </div>
+                        <div id="colLogin" class="col-10">
+                            <h3 class="fs-18px fw-bold p-0 m-0">Bem-vindo</h3>
+                            <p class="fs-14px text-muted">Entre na sua conta para ver suas compras, favoritos etc.</p>
+                        </div>
+                    </div>
+                    <div class="row g-1 pb-3">
+                        <div class="col">
+                            <button class="w-100 btn btn-primary py-2">Entre</button>
+                        </div>
+                        <div class="col">
+                            <button class="w-100 btn btn-light text-blue-ml border-blue-ml py-2">Crie a sua
+                                conta</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- OPÇÕES DO MENU-->
+                <div class="col-12 p-0 bg-white">
+                    <ul class="nav flex-column p-0 m-0">
+                        <li class="nav-item mt-3 p-0">
+                            <a class="fs-14px nav-link mobile text-dark active fw-bold" aria-current="page" href="#">
+                                <i class="mx-2 bi bi-house"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-tag"></i>
+                                Ofertas do Dia
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-clock-history"></i>
+                                Histórico
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-headset"></i>
+                                Contato
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column p-0 m-0 mt-3">
+                        <li class="nav-item mt-3 p-0">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" aria-current="page" href="#">
+                                <i class="mx-2 mdi mdi-tshirt-crew-outline"></i>
+                                Moda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-star"></i>
+                                Mais Vendidos <span class="ms-3 badge text-bg-primary">NOVO</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-airplane"></i>
+                                Compra Internacional <span class="ms-3 badge text-bg-primary">NOVO</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-shop-window"></i>
+                                Lojas Oficiais
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-list-task"></i>
+                                Categorias
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column p-0 m-0 mt-3">
+                        <li class="nav-item mt-3 p-0">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" aria-current="page" href="#">
+                                <i class="mx-2 bi bi-card-text"></i>
+                                Resumo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" href="#">
+                                <i class="mx-2 bi bi-tags"></i>
+                                Vender
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column p-0 m-0 mt-3 pb-3">
+                        <li class="nav-item mt-3 p-0">
+                            <a class="fs-14px nav-link mobile text-dark fw-bold" aria-current="page" href="#">
+                                <i class="mx-2 bi bi-download"></i>
+                                Compre e venda com o app!
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- LINHA DE BAIXO PARA PC (CEP E MENUS)-->
+            <div class="row g-0 d-none d-lg-flex">
+                <!-- COLUNA DO CEP-->
+                <div class="col-xl-2 col-lg-2 d-flex align-items-center pb-1">
+                    <div class="row ms-4 g-3">
+                        <div class="col-3">
+                            <i class="fs-4 bi bi-geo-alt"></i>
+                        </div>
+                        <div class="col-9">
+                            <p class="fs-12px p-0 m-0 text-muted">Informe o seu</p>
+                            <p class="fs-14px p-0 m-0">CEP</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- COLUNA ITENS MEIO-->
+                <div class="col-xl-6 col-lg-6">
+                    <nav class="navbar navbar-expand-lg p-0">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle fs-14px" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorias
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14px" href="#">Ofertas do dia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14px" href="#">Histórico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14px" href="#">Moda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14px" href="#">Vender</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14px" href="#">Contato</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <!-- COLUNA ITENS A DIREITA-->
+                <div class="col-xl-4 col-lg-4">
+                    <nav class="navbar navbar-expand-lg p-0">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark fs-14px" href="#">Crie a sua conta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark fs-14px" href="#">Entre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark fs-14px" href="#">Compras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark fs-14px" href="#">
+                                    <i class="bi bi-cart2"></i>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+            <!-- LINHA DE BAIXO PARA CELULAR (INFORME O CEP)-->
+            <div id="row-cep-mobile" class="row d-lg-none">
+                <div class="d-flex justify-content-between align-items-center py-2 border-top">
+                    <span class="fs-14px text-muted"><i class="bi bi-geo-alt"></i> Informe seu CEP</span>
+                    <i class="text-muted bi bi-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL-->
+    <div class="swiper banner">
+        <div class="swiper-wrapper">
+            <a href="#" class="swiper-slide">
+                <img class="img-fluid" src="img/banner.webp">
+            </a>
+            <a href="#" class="swiper-slide">
+                <img class="img-fluid" src="img/banner1.webp">
+            </a>
+            <a href="#" class="swiper-slide">
+                <img class="img-fluid" src="img/banner2.webp">
+            </a>
+            <a href="#" class="swiper-slide">
+                <img class="img-fluid" src="img/banner3.webp">
+            </a>
+
+        </div>
+        <div class="shadow swiper-button-next right-arrow bg-white pe-4 rounded-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+        </div>
+        <div class="shadow swiper-button-prev left-arrow bg-white ps-4 rounded-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- PROPAGANDA DO MERCADO PAGO-->
+    <section class="mt-lg-5">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-md-12 px-0">
+                    <div class="card py-2 rounded-0 border-0 shadow">
+                        <div class="card-body borda-azul">
+                            <div class="row">
+                                <div class="col-md-0 col-lg-5 col-xl-3 col-xxl-3 border-end d-none d-lg-block">
+                                    <span class="fs-18px">Pagamento rápido e seguro</span><br>
+                                    <span class="fs-14px text-muted">com Mercado Pago</span>
+                                </div>
+                                <div class="col-12 col-sm-10 col-md-10 col-lg-5 col-xl-4 col-xxl-3 text-center">
+                                    <img class="float-start mx-3" src="img/credit-card.svg">
+                                    <span class="fs-18px">Até 10 parcelas sem juros</span><br>
+                                    <a href="#" class="text-decoration-none">Ver mais</a>
+                                </div>
+                                <div class="col-md-0 col-lg-0 col-xl-4 col-xxl-3 d-none d-xl-block">
+                                    <img class="float-start mx-3" src="img/mercado-creditsv2.svg">
+                                    <span class="fs-18px">Parcelamento sem cartão</span><br>
+                                    <a href="#" class="text-decoration-none">Conheça o Mercado Crédito</a>
+                                </div>
+                                <div class="col-md-0 col-lg-0 col-xl-0 col-xxl-2 d-none d-xxl-block">
+                                    <img class="float-start mx-3" src="img/qr.svg">
+                                    <span class="fs-18px">Via Pix</span><br>
+                                    <a href="#" class="text-decoration-none">Ver Mais</a>
+                                </div>
+                                <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1 col-xxl-1 d-none d-sm-block">
+                                    <a href="#" class="btn-plus border"><i class="bi bi-plus-circle-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAIXE O APP MOBILE -->
+    <section class="py-4 d-lg-none">
+        <div class="container-fluid text-center">
+            <img src="img/baixe-o-app.webp" class="img-fluid rounded">
+        </div>
+    </section>
+
+    <!-- BASEADA NA SUA ÚLTIMA VISITA PC-->
+    <section class="mt-5 d-none d-md-block">
+        <div class="container">
+            <h3 class="text-muted">Baseado na sua última visita
+                <a href="#" class="ms-3 text-decoration-none fs-18px">Ver histórico</a>
+            </h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Swiper -->
+                    <div class="swiper product">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/tv.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/celular.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 999
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 899
+                                            <span class="text-green fs-14px">10% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Samsung Galaxy A03 Core Dual SIM 32 GB black 2 GB RAM
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/bicicleta.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 399
+                                            <!-- <span class="text-green fs-14px">30% OFF</span> -->
+                                        </span>
+                                        <p class="text-green fs-12px p-0 m-0">10x R$ 40 sem juros
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo pt-2 mb-1">
+                                            Biscicleta de 21 Marchas Super Turbo Professor Dimitri
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/ferramentas.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 120
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 89
+                                            <span class="text-green fs-14px">5% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Caixa de Ferramentas Super Premium Programação Web Kit 96 Peças
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/impressora.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 4.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 3.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Impressora PSG Top Neymar Printer do Futuro e Super Tinta Mbappe 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/liquidificador.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <!-- <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span> -->
+                                        <br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 250
+                                            <span class="text-green fs-14px">10x R$ 25</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Liquidificador de Exemplo Para Encher Linguiça No Titulo 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/notebook.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Notebook Samsung UN50AU7700GXZD Super 8GB RAM i25 LED 4K 50" 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/panelas.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <!-- <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>--><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 10.999
+                                            <span class="text-green fs-14px"></span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Panelas Lendárias Feitas de Ouro de Bastalto do Himalaia Turbo Vermelho Ruby
+                                            Triturado
+                                        </p>
+                                        <!-- <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/pneu.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            PNEU Carro Que Roda Feito de BORACHA DO ACRE Top Das Galáxias
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card border-0 shadow" style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/video-game.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 5.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Video Game POLISTATION Falsication Of Paraguay Totalmente Libre de Impuestos
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow swiper-button-next right-arrow-product bg-white pe-4 rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                        <div class="shadow swiper-button-prev left-arrow-product bg-white ps-4 rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BESEADA NA SUA ÚLTIMA VISITA MOBILE-->
+    <section class="d-block d-md-none ">
+        <div class="container-fluid">
+            <div class="row px-2">
+                <div class="col-12">
+                    <!-- TÓPICO DO CARD-->
+                    <div class="row">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="fw-bold col-12 bg-white py-4 border-top border-bottom-0 rounded-0">
+                            Baseado em sua última visita
+                        </div>
+                    </div>
+                    <!-- CONTEUDO DOS ITENS-->
+                    <div class="row row-cols-2">
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <a href="#" class="stretched-link">
+                                <img class="border-bottom card-img-top" src="img/products/tv.webp">
+                            </a>
+                            <div class="card-body card-content-prod text-start">
+                                <span class="fs-12px text-muted text-decoration-line-through">
+                                    R$ 2.599
+                                </span><br>
+                                <span class="h5 card-title fs-3">
+                                    R$ 1.399
+                                    <span class="text-green fs-14px">30% OFF</span>
+                                </span>
+                                <p class="text-muted fs-14px area-titulo mt-2">
+                                    Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                </p>
+                                <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                        class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <a href="#" class="stretched-link">
+                                <img class="border-bottom card-img-top" src="img/products/celular.webp">
+                            </a>
+                            <div class="card-body card-content-prod text-start">
+                                <span class="fs-12px text-muted text-decoration-line-through">
+                                    R$ 2.599
+                                </span><br>
+                                <span class="h5 card-title fs-3">
+                                    R$ 1.399
+                                    <span class="text-green fs-14px">30% OFF</span>
+                                </span>
+                                <p class="text-muted fs-14px area-titulo mt-2">
+                                    Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                </p>
+                                <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                        class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <a href="#" class="stretched-link">
+                                <img class="border-bottom card-img-top" src="img/products/ferramentas.webp">
+                            </a>
+                            <div class="card-body card-content-prod text-start">
+                                <span class="fs-12px text-muted text-decoration-line-through">
+                                    R$ 2.599
+                                </span><br>
+                                <span class="h5 card-title fs-3">
+                                    R$ 1.399
+                                    <span class="text-green fs-14px">30% OFF</span>
+                                </span>
+                                <p class="text-muted fs-14px area-titulo mt-2">
+                                    Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                </p>
+                                <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                        class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <a href="#" class="stretched-link">
+                                <img class="border-bottom card-img-top" src="img/products/bicicleta.webp">
+                            </a>
+                            <div class="card-body card-content-prod text-start">
+                                <span class="fs-12px text-muted text-decoration-line-through">
+                                    R$ 2.599
+                                </span><br>
+                                <span class="h5 card-title fs-3">
+                                    R$ 1.399
+                                    <span class="text-green fs-14px">30% OFF</span>
+                                </span>
+                                <p class="text-muted fs-14px area-titulo mt-2">
+                                    Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                </p>
+                                <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                        class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RODAPÉ DO CARD-->
+                    <div class="row">
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col-12 bg-white py-4 rounded-0">
+                            <a href="#" class="fw-bold text-decoration-none">Ver Todos
+                                <span class="float-end"><i class="bi bi-chevron-right"></i></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTAS DO DIA-->
+    <section class="mt-5 d-none d-md-block">
+        <div class="container">
+            <h3 class="text-muted">Ofertas do Dia
+                <a href="#" class="ms-3 text-decoration-none fs-18px">Ver todas</a>
+            </h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Swiper -->
+                    <div class="swiper product">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/tv.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/celular.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/bicicleta.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/ferramentas.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/impressora.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/liquidificador.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/notebook.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/panelas.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/pneu.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- ITEM PRODUTO-->
+                                <div class="card card-recolhido border-0 shadow"
+                                    style="box-shadow:0 1px 1px 0 rgba(0,0,0,.1)">
+                                    <a href="#" class="stretched-link">
+                                        <img class="border-bottom card-img-top" src="img/products/video-game.webp">
+                                    </a>
+                                    <div class="card-body card-content-prod oculto text-start">
+                                        <span class="fs-12px text-muted promo-text text-decoration-line-through">
+                                            R$ 2.599
+                                        </span>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-green fs-14px mt-2">
+                                            10x R$ 40 sem juros<br>
+                                            <b>Frete Grátis <i class="bi bi-lightning-charge-fill"></i> <i>Full</i></b>
+                                        </p>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow swiper-button-next right-arrow-product bg-white pe-4 rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                        <div class="shadow swiper-button-prev left-arrow-product bg-white ps-4 rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTAS DO DIA MOBILE-->
+    <section class="mt-4 d-block d-md-none">
+        <div class="container-fluid">
+            <div class="row px-2">
+                <div class="col-12">
+                    <!-- TÓPICO DO CARD-->
+                    <div class="row">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="fw-bold col-12 bg-white py-4 border-top border-bottom-0 rounded-0">
+                            Ofertas do dia
+                        </div>
+                    </div>
+                    <!-- CONTEUDO DOS ITENS-->
+                    <div class="row row-cols-1">
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <div class="row">
+                                <div class="col-5 d-flex align-items-center">
+                                    <a href="#" class="stretched-link">
+                                        <img class="card-img-top" src="img/products/tv.webp">
+                                    </a>
+                                </div>
+                                <div class="col-7 d-flex align-items-center py-3">
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <div class="row">
+                                <div class="col-5 d-flex align-items-center">
+                                    <a href="#" class="stretched-link">
+                                        <img class="card-img-top" src="img/products/celular.webp">
+                                    </a>
+                                </div>
+                                <div class="col-7 d-flex align-items-center py-3">
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- ITEM MOBILE-->
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col card border-0 rounded-0 p-0 m-0">
+                            <div class="row">
+                                <div class="col-5 d-flex align-items-center">
+                                    <a href="#" class="stretched-link">
+                                        <img class="card-img-top" src="img/products/ferramentas.webp">
+                                    </a>
+                                </div>
+                                <div class="col-7 d-flex align-items-center py-3">
+                                    <div class="card-body card-content-prod text-start">
+                                        <span class="fs-12px text-muted text-decoration-line-through">
+                                            R$ 2.599
+                                        </span><br>
+                                        <span class="h5 card-title fs-3">
+                                            R$ 1.399
+                                            <span class="text-green fs-14px">30% OFF</span>
+                                        </span>
+                                        <p class="text-muted fs-14px area-titulo mt-2">
+                                            Smart TV Samsung UN50AU7700GXZD LED 4K 50" 100V/240V
+                                        </p>
+                                        <p class="fw-bold text-green fs-14px">Frete Grátis <i
+                                                class="bi bi-lightning-charge-fill"></i> <i>Full</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- RODAPÉ DO CARD-->
+                    <div class="row">
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col-12 bg-white py-4 rounded-0">
+                            <a href="#" class="fw-bold text-decoration-none">Ver Todas
+                                <span class="float-end"><i class="bi bi-chevron-right"></i></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS DO MERCADO PONTOS PC-->
+    <section class="mt-5 d-none d-md-block">
+        <div class="container">
+            <h3 class="text-muted">Benefícios do Mercado Pontos
+                <a href="#" class="ms-3 text-decoration-none fs-18px">Ver todos os benefícios</a>
+            </h3>
+            <div class="row mt-5 ">
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="img/disney-card.webp" class="img-fluid rounded">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="img/hbo-card.webp" class="img-fluid rounded">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="img/paramont-card.webp" class="img-fluid rounded">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS DO MERCADO PONTOS MOBILE-->
+    <section class="mt-5 d-block d-md-none">
+        <div class="container-fluid">
+            <div class="row px-2">
+                <div class="col-12">
+                    <!-- TÓPICO DO CARD-->
+                    <div class="row px-2">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="fw-bold col-12 bg-white py-4 border-top border-bottom-0 rounded-0">
+                            Benefícios Mercado Pontos
+                        </div>
+                    </div>
+                    <!-- ITEM BENEFICIO-->
+                    <div class="row px-2">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="col-12 bg-white border-bottom-0 border-top rounded-0">
+                            <a href="#" class="bg-white py-2">
+                                <img src="img/disney-card.webp" class="py-2 rounded img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ITEM BENEFICIO-->
+                    <div class="row px-2">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="col-12 bg-white border-bottom-0 border-top rounded-0">
+                            <a href="#" class="bg-white py-2">
+                                <img src="img/hbo-card.webp" class="py-2 rounded img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ITEM BENEFICIO-->
+                    <div class="row px-2">
+                        <div style="box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5)"
+                            class="col-12 bg-white border-bottom-0 border-top rounded-0">
+                            <a href="#" class="bg-white py-2">
+                                <img src="img/paramont-card.webp" class="py-2 rounded img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RODAPÉ DO CARD-->
+                    <div class="row px-2">
+                        <div style="box-shadow: 0 0 1px 0 rgba(0,0,0,0.5)" class="col-12 bg-white py-4 rounded-0">
+                            <a href="#" class="fw-bold text-decoration-none">Ver Todos
+                                <span class="float-end"><i class="bi bi-chevron-right"></i></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPAGANDA -->
+    <section class="mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a href="#">
+                        <img src="img/propaganda.webp" class="rounded img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- FOOTER (RODAPÉ)-->
+    <footer class="bg-white py-3 my-4">
+        <div class="container">
+            <div class="row g-0 m-auto">
+                <div class="col-md-3 ms-md-5 pt-5 text-center">
+                    <img class="my-4" src="img/payment.svg">
+                    <h5>Escolha como pagar</h5>
+                    <p class="fs-14px text-muted">Com o Mercado Pago, você paga com cartão, boleto ou Pix. Você também
+                        pode pagar
+                        em até 12x no
+                        boleto com o Mercado Crédito.</p>
+                    <a href="#" class="text-decoration-none">Como pagar com Mercado Pago</a>
+                </div>
+                <div class="col-md-1 d-flex justify-content-center align-items-center"
+                    style="margin-top:120px; height: 70px">
+                    <div class="vr"></div>
+                </div>
+                <div class="col-md-3 pt-5 text-center">
+                    <img class="my-4" src="img/shipping.svg">
+                    <h5>Frete grátis a partir de R$ 79</h5>
+                    <p class="fs-14px text-muted">Só por estar cadastrado no Mercado Livre, você tem frete grátis em
+                        milhares de produtos. É um benefício do Mercado Pontos.</p>
+                    <a href="#" class="text-decoration-none">Saiba mais sobre este benefício</a>
+                </div>
+                <div class="col-md-1 d-flex justify-content-center align-items-center"
+                    style="margin-top:120px; height: 70px">
+                    <div class="vr"></div>
+                </div>
+                <div class="col-md-3 pt-5 text-center">
+                    <img class="my-4" src="img/protected.svg">
+                    <h5>Segurança, do início ao fim</h5>
+                    <p class="fs-14px text-muted">Você não gostou do que comprou? Devolva! No Mercado Livre não há nada
+                        que você não possa fazer, porque você está sempre protegido.</p>
+                    <a href="#" class="text-decoration-none">Como te protegemos</a>
+                </div>
+                <!-- <div class="col-md-1 d-flex justify-content-center align-items-center"
+                    style="margin-top:120px; height: 70px">
+                    <div class="vr"></div>
+                </div> -->
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <a id="btn-information"
+                        class="btn btn-white border-bottom-0 rounded-0 border-top border-start border-end"
+                        data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        Mais informações <i id="chevron" class="ms-2 bi bi-chevron-up"></i>
+                    </a>
+                    <div class="collapse bg-light" id="collapseExample">
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Sobre o</h6>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Livre</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Investor relations</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Tendências</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Sustentabilidade</a><br>
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Outros Sites</h6>
+                                <a href="#" class="text-muted text-decoration-none">Desenvolvedores</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Pago</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Envios</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Shops</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Ads</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Mercado Livre Ideiais</a><br>
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Contato</h6>
+                                <a href="#" class="text-muted text-decoration-none">Comprar</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Vender</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Solução de Problemas</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Segurança</a><br>
+
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Redes Sociais</h6>
+                                <a href="#" class="text-muted text-decoration-none">Twitter</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Facebook</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Instagram</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Youtube</a><br>
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Minha Conta</h6>
+                                <a href="#" class="text-muted text-decoration-none">Resumo</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Favoritos</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Vender</a><br>
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-5 mb-3 fw-bold">Mercado Pontos</h6>
+                                <a href="#" class="text-muted text-decoration-none">Nivel 6</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Disney+</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Star+</a><br>
+                                <a href="#" class="text-muted text-decoration-none">HBO MAX</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Paramont+</a><br>
+                                <a href="#" class="text-muted text-decoration-none">Deezer</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <a href="#" class="fs-12px text-decoration-none text-dark">Trabalhe conosco</a>
+                    <a href="#" class="ms-3 fs-12px text-decoration-none text-dark">Termos e condições</a>
+                    <a href="#" class="ms-3 fs-12px text-decoration-none text-dark">Como cuidamos da sua privacidade</a>
+                    <a href="#" class="ms-3 fs-12px text-decoration-none text-dark"> Acessibilidade</a>
+                    <a href="#" class="ms-3 fs-12px text-decoration-none text-dark">Contato</a>
+                    <a href="#" class="ms-3 fs-12px text-decoration-none text-dark">Informações sobre seguros</a>
+                    <p class="mt-3 p-0 m-0 text-muted fs-12px">Copyright © 1999-2022 Ebazar.com.br LTDA</p>
+                    <p class="text-muted fs-12px">CNPJ n.º 03.007.331/0001-41 / Av. das Nações Unidas, nº 3.003, Bonfim,
+                        Osasco/SP - CEP 06233-903 - empresa do grupo Mercado Livre.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- BOOTSTRAP @5.2.0 JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--  Swiper @8.3.2 JS-->
+    <script src="js/swiper-bundle.min.js"></script>
+
+    <script>
+        //PEGAR O COMPONENTE
+        const busca = document.getElementById('busca');
+        const menu = document.getElementById('menu-mobile');
+        const cepMobile = document.getElementById('row-cep-mobile');
+        const tail = document.getElementById('tail');
+
+        //O MENU E O RABINHO SEMPRE COMEÇA FECHADO
+        menu.classList.toggle("d-none");
+        tail.classList.toggle("d-none");
+
+        //VERIFICAR TAMANHO SE FOR MENOR QUE 500PX TROCAR O PLACEHOLDER
+        if (window.innerWidth < 500) {
+            busca.setAttribute('placeholder', 'Estou buscando...');
+        }
+
+        //DETECTAR VARIAÇÃO DE TAMANHO DA TELA
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 500) {
+                busca.setAttribute('placeholder', 'Estou buscando...');
+            } else {
+                busca.setAttribute('placeholder', 'Buscar produtos, marcas e muito mais...');
+            }
+        })
+
+        //DETECTAR QUANDO CLICAR NO "HMABURGUER"
+        document.getElementById('hamburguer').addEventListener("click", () => {
+            var icone = document.getElementById('hamburguer').className;
+            if (icone == "fs-3 ps-4 pe-2 bi bi-list") {
+                document.getElementById('hamburguer').className = "fs-3 ps-4 pe-2 bi bi-x-lg";
+            } else {
+                document.getElementById('hamburguer').className = "fs-3 ps-4 pe-2 bi bi-list";
+            }
+
+            //APARECER / DESAPARECER MENU E CEP MOBILE
+            menu.classList.toggle("d-none");
+            tail.classList.toggle("d-none");
+            cepMobile.classList.toggle("d-none");
+
+        })
+
+        //CHEVRON DO "MAIS INFORMAÇÕES"
+        document.getElementById('btn-information').addEventListener("click", () => {
+            var classe = document.getElementById('chevron').className;
+            if (classe == "ms-2 bi bi-chevron-up") {
+                document.getElementById('chevron').className = "ms-2 bi bi-chevron-down";
+            } else {
+                document.getElementById('chevron').className = "ms-2 bi bi-chevron-up";
+            }
+        })
+    </script>
+
+    <!-- INICIALIZAR BANNER PRINCIPAL -->
+    <script>
+        var swiper = new Swiper(".banner", {
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        //SWIPER DOS PRODUTOS
+        var swiper = new Swiper(".product", {
+            slidesPerView: 5,
+            spaceBetween: 20,
+            slidesPerGroup: 5,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                767: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                992: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                1200: {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
